@@ -1,50 +1,70 @@
-# 🚀 Fullstack Node.js Project
+# 🌟 Meu Projeto Node 🌟
 
-This repository contains the full-stack application developed for a project at Pontifical Catholic University (PUC). The application consists of a backend built with Node.js and Prisma, and a frontend built with modern web technologies.
+Bem-vindo ao meu projeto Node! Este README irá guiá-lo pelos passos necessários para rodar a aplicação.
 
-## ✨ Features
+## 🛠️ Pré-requisitos
 
-- **Backend**: Node.js, Express, Prisma ORM, MongoDB
+- Node.js instalado
+- NPM (gerenciador de pacotes do Node)
+- Conta no [MongoDB Atlas](https://cloud.mongodb.com) com um cluster configurado
 
-## 🗂️ Project Structure
+## 🚀 Como rodar o projeto
 
-- **backend/**: Contains all backend-related code and configurations
+1. **Clone o repositório**:
 
-## 📋 Prerequisites
-
-Make sure you have Node.js and npm installed on your machine.
-
-## ⚙️ Installation
-
-1. **Clone the repository**:
-    ```sh
-    git clone https://github.com/yourusername/repository-name.git
-    cd repository-name
+    ```bash
+    git clone https://github.com/santanagabi/puc-project-node.git
+    cd backend-JWT
     ```
 
-2. **Install backend dependencies**:
-    ```sh
-    cd backend
+2. **Instale as dependências**:
+
+    ```bash
     npm install
     ```
 
-3. **Install frontend dependencies**:
-    ```sh
-    cd ../frontend
-    npm install
+3. **Configure as variáveis de ambiente**:
+
+    Crie um arquivo `.env` na raiz do projeto e adicione as seguintes linhas:
+
+    ```env
+    DB_USER=santanagabi
+    DB_PASS=senha
+    SECRET=12345
     ```
 
-## 🚀 Running the Application
+4. **Inicie o servidor**:
 
-1. **Start Prisma Studio**:
-    ```sh
-    cd backend
-    npx prisma studio
+    ```bash
+    npm start
     ```
 
-2. **Run the backend**:
-    ```sh
-    node --watch server.js
+    Ou, se preferir usar o `nodemon` para desenvolvimento:
+
+    ```bash
+    npx nodemon server.js
     ```
 
-Feel free to contribute by opening issues and submitting pull requests.
+5. **Acesse a aplicação**:
+
+    A aplicação estará rodando em `http://localhost:3000`.
+
+## 📋 Rotas da API
+
+- **GET** `/` - Pega todos os usuários
+- **GET** `/:id` - Pega um usuário por ID (rota privada, requer token)
+- **POST** `/auth/register` - Registra um novo usuário
+- **POST** `/auth/login` - Faz login do usuário e retorna um token
+- **DELETE** `/:id` - Deleta um usuário por ID
+
+## 🔧 Configuração do MongoDB
+
+- Acesse o [MongoDB Atlas](https://cloud.mongodb.com) e crie um cluster.
+- Obtenha as credenciais de acesso (usuário e senha) e insira no arquivo `.env`.
+
+## 🛡️ Middleware de Autenticação
+
+Para acessar rotas protegidas, utilize o token JWT no header da requisição:
+
+```http
+Authorization: Bearer seu_token_aqui
